@@ -118,7 +118,10 @@ function compile_app() {
 function release_app() {
   cd $build_path
 
-  if [ $release = true ]; then
+  if [ $distillery = true ]; then
+    output_section "Building distillery release"
+    mix distillery.release
+  elif [ $release = true ]; then
     output_section "Building release"
     mix release --overwrite
   fi
